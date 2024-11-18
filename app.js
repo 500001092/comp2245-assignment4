@@ -1,33 +1,32 @@
-// Wait for the DOM to fully load
 document.addEventListener("DOMContentLoaded", () => {
-    // Grab the button by its ID
     const searchButton = document.getElementById("searchButton");
+    const searchInput = document.getElementById("searchInput");
+    const resultDiv = document.getElementById("result");
 
-    // Add a click event listener to the button
     searchButton.addEventListener("click", () => {
-        // Create a new XMLHttpRequest object
-        const xhr = new XMLHttpRequest();
+        const query = searchInput.value.trim();
+        const url = query
+            ? `superheroes.php?query=${encodeURIComponent(query)}`
+            : "superheroes.php";
 
-        // Open a GET request to 'superheroes.php'
-        xhr.open("GET", "superheroes.php", true);
+        console.log("Query:", query); 
+        console.log("Request URL:", url); 
 
-        // Define what happens when the request is complete
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                // Display the server's response as an alert
-                alert(xhr.responseText);
-            } else {
-                // Handle errors
-                alert("Error fetching data: " + xhr.statusText);
-            }
-        };
-
-        // Handle network errors
-        xhr.onerror = function () {
-            alert("Network error occurred.");
-        };
-
-        // Send the request
-        xhr.send();
+        fetch(url)
+            .then(response => {
+                console.log("Response Status:", response.status); 
+                if (!response.ok) {
+                    throw new Error("Network response was not ok " + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log("Response Data:", data); 
+                resultDiv.innerHTML = data;
+            })
+            .catch(error => {
+                console.error("Error occurred:", error); 
+                resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            });
     });
 });

@@ -1,0 +1,111 @@
+body, h1, p, ul, li {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; 
+}
+
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    border: 3px solid #007BFF; 
+    border-radius: 10px;
+    background-color: #ffffff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 2px solid #007BFF; 
+    padding-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 20px 0;
+    padding: 0;
+    text-align: left;
+    background-color: #e9f7ff; 
+    border: 1px solid #007BFF; 
+    border-radius: 5px;
+    padding: 10px;
+}
+
+ul li {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #555;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+ul li:last-child {
+    border-bottom: none; 
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.form {
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: calc(100% - 100px);
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #0056b3; 
+    box-shadow: 0 0 5px #007BFF;
+}
+
+#searchButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#searchButton:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); 
+}
+
+.result {
+    text-align: left;
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff8e1; 
+    border: 1px solid #ffcc00; 
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    margin-top: 20px;
+    padding: 10px 0;
+    text-align: center;
+    color: #555;
+    font-size: 0.9rem;
+    border-top: 2px solid #007BFF; 
+    background-color: #e9f7ff; 
+}

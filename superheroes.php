@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: text/html; charset=UTF-8");
 
 $superheroes = [
   [
@@ -63,15 +65,29 @@ $superheroes = [
   ], 
 ];
 
+$query = isset($_GET['query']) ? trim($_GET['query']) : '';
+
+$query = filter_var($query, FILTER_SANITIZE_STRING);
+
+if (empty($query)) {
+    echo "<ul>";
+    foreach ($superheroes as $superhero) {
+        echo "<li>" . htmlspecialchars($superhero['alias']) . "</li>";
+    }
+    echo "</ul>";
+} else {
+    $results = array_filter($superheroes, function ($superhero) use ($query) {
+        return stripos($superhero['name'], $query) !== false || stripos($superhero['alias'], $query) !== false;
+    });
+
+    if (!empty($results)) {
+        foreach ($results as $superhero) {
+            echo "<h3>" . htmlspecialchars($superhero['alias']) . "</h3>";
+            echo "<h4>" . htmlspecialchars($superhero['name']) . "</h4>";
+            echo "<p>" . htmlspecialchars($superhero['biography']) . "</p>";
+        }
+    } else {
+        echo "<p>Superhero not found</p>";
+    }
+}
 ?>
-
-<?php
-echo "Captain America\nIronman\nSpiderman\nCaptain Marvel\nBlack Widow\nHulk\nHawkeye\nBlack Panther\nThor\nScarlett Witch";
-?>
-
-
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
