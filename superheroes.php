@@ -65,6 +65,11 @@ $superheroes = [
 
 ?>
 
+<?php
+echo "Captain America\nIronman\nSpiderman\nCaptain Marvel\nBlack Widow\nHulk\nHawkeye\nBlack Panther\nThor\nScarlett Witch";
+?>
+
+
 <ul>
 <?php foreach ($superheroes as $superhero): ?>
   <li><?= $superhero['alias']; ?></li>
